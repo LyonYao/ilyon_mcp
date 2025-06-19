@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+*.log
+*.sqlite3
+*.db
+
+# Jupyter/Notebook
+.ipynb_checkpoints/
+
+# VSCode
+.vscode/
+
+# 环境/依赖
+.env
+.venv/
+venv/
+env/
+ENV/
+.Python
+
+# 模型/数据
+*.dat
+*.model
+*.h5
+*.pth
+*.ckpt
+
+# 其他
+.DS_Store
+Thumbs.db

@@ -1,0 +1,11 @@
+# 示例训练数据（中文意图分类）
+# 每行一个样本，格式：文本\t标签
+创建一个EC2实例	create_ec2
+我要新建EC2	create_ec2
+删除EC2实例	delete_ec2
+销毁EC2	delete_ec2
+新建S3存储桶	create_s3
+创建S3 bucket	create_s3
+删除S3存储桶	delete_s3
+销毁S3 bucket	delete_s3
+# 可根据实际需求扩展更多样本
