@@ -2,7 +2,7 @@ import boto3
 
 class AWSAdapter:
     def create_ec2(self, params):
-        ec2 = boto3.resource('ec2', region_name=params.get('region', 'us-west-2'))
+        ec2 = boto3.resource('ec2', region_name=params.get('region', 'ap-east-1'))
         instances = ec2.create_instances(
             ImageId=params.get('image_id', 'ami-0c94855ba95c71c99'),
             MinCount=1,
@@ -12,7 +12,7 @@ class AWSAdapter:
         return f"EC2实例已创建，ID: {instances[0].id}"
 
     def delete_ec2(self, params):
-        ec2 = boto3.resource('ec2', region_name=params.get('region', 'us-west-2'))
+        ec2 = boto3.resource('ec2', region_name=params.get('region', 'ap-east-1'))
         instance_id = params.get('instance_id')
         if not instance_id:
             return "缺少instance_id参数"
@@ -20,12 +20,12 @@ class AWSAdapter:
         instance.terminate()
         return f"EC2实例已销毁，ID: {instance_id}"
 
-    def create_s3_bucket(self, params):
-        s3 = boto3.client('s3', region_name=params.get('region', 'us-west-2'))
+    def create_s3(self, params):
+        s3 = boto3.client('s3', region_name=params.get('region', 'ap-east-1'))
         bucket_name = params.get('bucket_name')
         if not bucket_name:
             return "缺少bucket_name参数"
-        region = params.get('region', 'us-west-2')
+        region = params.get('region', 'ap-east-1')
         try:
             if region == 'us-east-1':
                 s3.create_bucket(Bucket=bucket_name)
@@ -38,8 +38,8 @@ class AWSAdapter:
         except Exception as e:
             return f"创建S3存储桶失败: {str(e)}"
 
-    def delete_s3_bucket(self, params):
-        s3 = boto3.resource('s3', region_name=params.get('region', 'us-west-2'))
+    def delete_s3(self, params):
+        s3 = boto3.resource('s3', region_name=params.get('region', 'ap-east-1'))
         bucket_name = params.get('bucket_name')
         if not bucket_name:
             return "缺少bucket_name参数"
